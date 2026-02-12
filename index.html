@@ -3,68 +3,74 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ZCO CENTRAL OS</title>
+    <title>ZCO CENTRAL OS | Military Grade</title>
     <style>
         :root { --main: #00f2ff; --bg: #050505; }
         body { background-color: var(--bg); color: var(--main); font-family: 'Courier New', monospace; margin: 0; text-align: center; }
-        .nav-menu { display: flex; justify-content: center; gap: 10px; margin: 20px 0; flex-wrap: wrap; }
-        .nav-btn { background: transparent; border: 1px solid var(--main); color: var(--main); padding: 10px; cursor: pointer; flex: 1; max-width: 120px; font-size: 0.8rem; }
+        .nav-menu { display: flex; justify-content: center; gap: 5px; margin: 20px 0; padding: 0 10px; }
+        .nav-btn { background: transparent; border: 1px solid var(--main); color: var(--main); padding: 10px 5px; cursor: pointer; flex: 1; font-size: 0.7rem; }
         .nav-btn.active { background: var(--main); color: #000; }
         .content-section { display: none; padding: 20px; animation: fadeIn 0.5s; }
         @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
-        .id-card { width: 100%; max-width: 350px; border: 2px solid var(--main); margin-bottom: 20px; }
-        table { width: 100%; border-collapse: collapse; margin-top: 10px; font-size: 0.8rem; }
-        th, td { border: 1px solid var(--main); padding: 8px; }
-        th { background: rgba(0, 242, 255, 0.1); }
-        .case-file { border: 1px solid var(--main); padding: 15px; margin-bottom: 10px; text-align: right; background: rgba(0, 242, 255, 0.05); }
+        table { width: 100%; border-collapse: collapse; margin-top: 10px; font-size: 0.75rem; }
+        th, td { border: 1px solid var(--main); padding: 10px; text-align: center; }
+        th { background: rgba(0, 242, 255, 0.1); color: #fff; }
+        .rank-header { color: #fff; border-bottom: 1px solid var(--main); padding-bottom: 5px; margin-top: 25px; text-transform: uppercase; }
     </style>
 </head>
 <body>
 
     <div id="login-screen" style="padding-top: 20vh;">
         <img src="Logo- png.PNG" width="80">
-        <h2>نظام تشغيل ZCO</h2>
-        <input type="password" id="pass" placeholder="كود القيادة" style="background:transparent; border:1px solid var(--main); color:#fff; padding:10px; text-align:center;"><br><br>
-        <button onclick="login()" style="background:var(--main); border:none; padding:10px 20px; font-weight:bold;">دخول</button>
+        <h2>نظام القيادة العسكرية ZCO</h2>
+        <input type="password" id="pass" placeholder="كود العبور" style="background:transparent; border:1px solid var(--main); color:#fff; padding:10px; text-align:center;"><br><br>
+        <button onclick="login()" style="background:var(--main); border:none; padding:10px 20px; font-weight:bold; cursor:pointer;">دخول</button>
     </div>
 
     <div id="main-system" style="display:none;">
         <div class="nav-menu">
             <button class="nav-btn active" onclick="showTab('id-tab', this)">الهوية</button>
-            <button class="nav-btn" onclick="showTab('ranks-tab', this)">الرتب</button>
+            <button class="nav-btn" onclick="showTab('ranks-tab', this)">الرتب العسكرية</button>
             <button class="nav-btn" onclick="showTab('cases-tab', this)">القضايا</button>
         </div>
 
         <div id="id-tab" class="content-section" style="display:block;">
-            <h3>البطاقة التعريفية للقائد</h3>
-            <img src="Image png.jpg" class="id-card">
-            <p>الاسم: ZOUHIR MARDI | الكود: Z-01</p>
+            <h3 class="rank-header">القائد الأعلى للمنظمة</h3>
+            <img src="Image png.jpg" style="width:100%; max-width:350px; border:2px solid var(--main); margin-bottom:15px;">
+            <p>NAME: ZOUHIR MARDI | CODE: Z-01</p>
         </div>
 
         <div id="ranks-tab" class="content-section">
-            <h3>هيكل الرتب والوحدات</h3>
+            <h3 class="rank-header">السلم القيادي (Command Hierarchy)</h3>
             <table>
-                <tr><th>الرتبة</th><th>الرمز</th><th>الواجب</th></tr>
-                <tr><td>القائد الأعلى</td><td>Z-01</td><td>القيادة والتحكم</td></tr>
-                <tr><td>النائب</td><td>Z-02</td><td>إدارة العمليات</td></tr>
+                <tr><th>الرتبة</th><th>الكود</th><th>الوحدة</th></tr>
+                <tr><td style="color: gold;">Major Colonel</td><td>Z-01</td><td>المجلس الأعلى</td></tr>
+                <tr><td>Colonel</td><td>Z-02</td><td>هيئة الأركان</td></tr>
+                <tr><td>Major</td><td>Z-03</td><td>قادة الوحدات</td></tr>
+                <tr><td>Captain</td><td>Z-04</td><td>العمليات الميدانية</td></tr>
             </table>
-            <h3>توزيع الفرق</h3>
+
+            <h3 class="rank-header">رتب التنفيذ (Field Grades)</h3>
             <table>
-                <tr><th>الفريق</th><th>الوحدة</th><th>الحالة</th></tr>
-                <tr><td>زيتا ألفا</td><td>الشرطة والنظام</td><td>نشط</td></tr>
-                <tr><td>زيتا دلتا</td><td>الاستخبارات</td><td>نشط</td></tr>
+                <tr><th>الرتبة</th><th>المستوى</th><th>الحالة</th></tr>
+                <tr><td>Sergeant</td><td>Z-05</td><td>نخبة الميدان</td></tr>
+                <tr><td>Cadet</td><td>Z-06</td><td>تحت التدريب</td></tr>
+                <tr><td>Solo Cadet</td><td>Z-07</td><td>مهمات فردية</td></tr>
+            </table>
+
+            <h3 class="rank-header">توزيع الفرق والمهام</h3>
+            <table>
+                <tr><th>الفريق</th><th>القطاع</th><th>الرتبة المسؤولة</th></tr>
+                <tr><td>Z-Alpha</td><td>الشرطة والنظام</td><td>Captain & Above</td></tr>
+                <tr><td>Z-Delta</td><td>الاستخبارات</td><td>Major & Above</td></tr>
             </table>
         </div>
 
         <div id="cases-tab" class="content-section">
-            <h3>ملفات القضايا النشطة</h3>
-            <div class="case-file">
-                <strong>القضية #001:</strong> تأمين الاتصالات المشفرة.<br>
-                <small>الحالة: قيد التنفيذ</small>
-            </div>
-            <div class="case-file">
-                <strong>القضية #002:</strong> استكمال هيكل النواب.<br>
-                <small>الحالة: بحث عن كفاءات</small>
+            <h3 class="rank-header">ملفات العمليات</h3>
+            <div style="border:1px solid var(--main); padding:15px; background:rgba(0,242,255,0.05); text-align:right;">
+                <strong>عملية "القبضة":</strong> تأمين المقر وتصنيف الرتب الجديدة.<br>
+                <small>الحالة: نشط</small>
             </div>
         </div>
     </div>
@@ -74,7 +80,7 @@
             if(document.getElementById('pass').value === 'ARCHITECT-01-Z') {
                 document.getElementById('login-screen').style.display = 'none';
                 document.getElementById('main-system').style.display = 'block';
-            } else { alert('خطأ في التصريح!'); }
+            } else { alert('ACCESS DENIED'); }
         }
         function showTab(tabId, btn) {
             let sections = document.getElementsByClassName('content-section');
