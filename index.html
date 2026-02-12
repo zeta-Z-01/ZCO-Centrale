@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ZCO CENTRAL | المقر المركزي</title>
+    <style>
+        :root { --main-color: #00f2ff; --bg-color: #050505; }
+        body { background-color: var(--bg-color); color: var(--main-color); font-family: 'Courier New', monospace; text-align: center; margin: 0; }
+        .login-box { border: 1px solid var(--main-color); padding: 30px; margin: 100px auto; width: 80%; max-width: 400px; background: #000; }
+        input { background: transparent; border: 1px solid var(--main-color); color: #fff; padding: 10px; text-align: center; margin: 20px 0; width: 80%; }
+        button { background: var(--main-color); color: #000; border: none; padding: 10px 20px; cursor: pointer; font-weight: bold; }
+        #dashboard { display: none; padding: 20px; }
+        .id-card-img { width: 100%; max-width: 350px; border: 2px solid var(--main-color); margin: 20px 0; }
+        .logo-img { width: 100px; margin-bottom: 10px; }
+        table { width: 100%; border-collapse: collapse; margin-top: 20px; }
+        th, td { border: 1px solid var(--main-color); padding: 10px; font-size: 0.8rem; }
+    </style>
+</head>
+<body>
+
+    <div id="login" class="login-box">
+        <img src="Logo- png.PNG" alt="ZCO LOGO" class="logo-img">
+        <h1>ZÊTA CYBER OPERATION</h1>
+        <p>IDENTIFICATION REQUIRED</p>
+        <input type="password" id="pass" placeholder="ENTER RANK CODE">
+        <br>
+        <button onclick="check()">ACCESS</button>
+    </div>
+
+    <div id="dashboard">
+        <h2>WELCOME, THE ARCHITECT (Z-01)</h2>
+        <hr>
+        <img src="Image png.jpg" alt="Z-01 ID CARD" class="id-card-img">
+        <h3>OPERATIONAL HIERARCHY</h3>
+        <table>
+            <tr><th>RANK</th><th>NAME</th><th>CODE</th><th>DUTY</th></tr>
+            <tr><td>THE ARCHITECT</td><td>ZOUHIR MARDI</td><td>Z-01</td><td>COMMAND</td></tr>
+            <tr><td>FIELD LEADER</td><td>PENDING</td><td>Z-ALPHA</td><td>OFFENSIVE</td></tr>
+        </table>
+    </div>
+
+    <script>
+        function check() {
+            var p = document.getElementById("pass").value;
+            if(p === "ARCHITECT-01-Z") {
+                document.getElementById("login").style.display = "none";
+                document.getElementById("dashboard").style.display = "block";
+            } else { alert("ACCESS DENIED"); }
+        }
+    </script>
+</body>
+</html>
