@@ -1,95 +1,84 @@
 <!DOCTYPE html>
-<html lang="ar" dir="rtl">
+<html lang="ar">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ZCO CENTRAL OS | Military Grade</title>
+    <title>ZCO HQ - Command Center</title>
     <style>
-        :root { --main: #00f2ff; --bg: #050505; }
-        body { background-color: var(--bg); color: var(--main); font-family: 'Courier New', monospace; margin: 0; text-align: center; }
-        .nav-menu { display: flex; justify-content: center; gap: 5px; margin: 20px 0; padding: 0 10px; }
-        .nav-btn { background: transparent; border: 1px solid var(--main); color: var(--main); padding: 10px 5px; cursor: pointer; flex: 1; font-size: 0.7rem; }
-        .nav-btn.active { background: var(--main); color: #000; }
-        .content-section { display: none; padding: 20px; animation: fadeIn 0.5s; }
-        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
-        table { width: 100%; border-collapse: collapse; margin-top: 10px; font-size: 0.75rem; }
-        th, td { border: 1px solid var(--main); padding: 10px; text-align: center; }
-        th { background: rgba(0, 242, 255, 0.1); color: #fff; }
-        .rank-header { color: #fff; border-bottom: 1px solid var(--main); padding-bottom: 5px; margin-top: 25px; text-transform: uppercase; }
+        body {
+            background-color: #050505;
+            color: #00ff41;
+            font-family: 'Courier New', Courier, monospace;
+            margin: 0;
+            overflow-x: hidden;
+        }
+        .header {
+            text-align: center;
+            padding: 20px;
+            border-bottom: 2px solid #00ff41;
+            text-shadow: 0 0 10px #00ff41;
+        }
+        .radar-box {
+            border: 1px solid #00ff41;
+            margin: 20px;
+            padding: 15px;
+            background: rgba(0, 255, 65, 0.05);
+        }
+        .target {
+            margin-bottom: 10px;
+            padding: 5px;
+            border-left: 3px solid #ff0000;
+            background: rgba(255, 0, 0, 0.1);
+        }
+        .success {
+            border-left: 3px solid #00ff41;
+            background: rgba(0, 255, 65, 0.1);
+        }
+        .matrix-text {
+            font-size: 0.8em;
+            color: #008f11;
+        }
     </style>
 </head>
 <body>
 
-    <div id="login-screen" style="padding-top: 20vh;">
-        <img src="Logo- png.PNG" width="80">
-        <h2>نظام القيادة العسكرية ZCO</h2>
-        <input type="password" id="pass" placeholder="كود العبور" style="background:transparent; border:1px solid var(--main); color:#fff; padding:10px; text-align:center;"><br><br>
-        <button onclick="login()" style="background:var(--main); border:none; padding:10px 20px; font-weight:bold; cursor:pointer;">دخول</button>
+<div class="header">
+    <h1>ZCO OPERATIONAL RADAR v1.0</h1>
+    <p>Commander: Z-01 | Assistant: Z-02</p>
+</div>
+
+<div class="radar-box">
+    <h3>[🛰️] ACTIVE TARGETS & LOGS</h3>
+    
+    <div class="target success">
+        <strong>TARGET #001: Boss Pacific (ERP System)</strong><br>
+        Status: SUCCESSFUL INTRUSION <br>
+        Loot: Full Directory Listing Access
     </div>
 
-    <div id="main-system" style="display:none;">
-        <div class="nav-menu">
-            <button class="nav-btn active" onclick="showTab('id-tab', this)">الهوية</button>
-            <button class="nav-btn" onclick="showTab('ranks-tab', this)">الرتب العسكرية</button>
-            <button class="nav-btn" onclick="showTab('cases-tab', this)">القضايا</button>
-        </div>
-
-        <div id="id-tab" class="content-section" style="display:block;">
-            <h3 class="rank-header">القائد الأعلى للمنظمة</h3>
-            <img src="Image png.jpg" style="width:100%; max-width:350px; border:2px solid var(--main); margin-bottom:15px;">
-            <p>NAME: ZOUHIR MARDI | CODE: Z-01</p>
-        </div>
-
-        <div id="ranks-tab" class="content-section">
-            <h3 class="rank-header">السلم القيادي (Command Hierarchy)</h3>
-            <table>
-                <tr><th>الرتبة</th><th>الكود</th><th>الوحدة</th></tr>
-                <tr><td style="color: gold;">Major Colonel</td><td>Z-01</td><td>المجلس الأعلى</td></tr>
-                <tr><td>Colonel</td><td>Z-02</td><td>هيئة الأركان</td></tr>
-                <tr><td>Major</td><td>Z-03</td><td>قادة الوحدات</td></tr>
-                <tr><td>Captain</td><td>Z-04</td><td>العمليات الميدانية</td></tr>
-            </table>
-
-            <h3 class="rank-header">رتب التنفيذ (Field Grades)</h3>
-            <table>
-                <tr><th>الرتبة</th><th>المستوى</th><th>الحالة</th></tr>
-                <tr><td>Sergeant</td><td>Z-05</td><td>نخبة الميدان</td></tr>
-                <tr><td>Cadet</td><td>Z-06</td><td>تحت التدريب</td></tr>
-                <tr><td>Solo Cadet</td><td>Z-07</td><td>مهمات فردية</td></tr>
-            </table>
-
-            <h3 class="rank-header">توزيع الفرق والمهام</h3>
-            <table>
-                <tr><th>الفريق</th><th>القطاع</th><th>الرتبة المسؤولة</th></tr>
-                <tr><td>Z-Alpha</td><td>الشرطة والنظام</td><td>Captain & Above</td></tr>
-                <tr><td>Z-Delta</td><td>الاستخبارات</td><td>Major & Above</td></tr>
-            </table>
-        </div>
-
-        <div id="cases-tab" class="content-section">
-            <h3 class="rank-header">ملفات العمليات</h3>
-            <div style="border:1px solid var(--main); padding:15px; background:rgba(0,242,255,0.05); text-align:right;">
-                <strong>عملية "القبضة":</strong> تأمين المقر وتصنيف الرتب الجديدة.<br>
-                <small>الحالة: نشط</small>
-            </div>
-        </div>
+    <div class="target">
+        <strong>TARGET #002: HICIT (.edu.eg)</strong><br>
+        Status: PENDING - Blind Injection
     </div>
 
-    <script>
-        function login() {
-            if(document.getElementById('pass').value === 'ARCHITECT-01-Z') {
-                document.getElementById('login-screen').style.display = 'none';
-                document.getElementById('main-system').style.display = 'block';
-            } else { alert('ACCESS DENIED'); }
-        }
-        function showTab(tabId, btn) {
-            let sections = document.getElementsByClassName('content-section');
-            for(let s of sections) s.style.display = 'none';
-            document.getElementById(tabId).style.display = 'block';
-            let btns = document.getElementsByClassName('nav-btn');
-            for(let b of btns) b.classList.remove('active');
-            btn.classList.add('active');
-        }
-    </script>
+    <div class="target">
+        <strong>TARGET #003: Campus SDH (.gov.ar)</strong><br>
+        Status: MONITORING - Mod_Security Wall
+    </div>
+</div>
+
+<div class="radar-box">
+    <h3>[🛠️] TOOLS PREPARATION</h3>
+    <ul>
+        <li>Dorking: inurl:news.php?id=</li>
+        <li>Injection: /*!50000union*/</li>
+        <li>Scanning: Directory Indexing</li>
+    </ul>
+</div>
+
+<div style="padding: 20px;" class="matrix-text">
+    <marquee>Executing: select 1,2,3,4,5... | loading stealth mode... | ZCO protocols active</marquee>
+</div>
+
 </body>
 </html>
