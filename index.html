@@ -3,91 +3,155 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>ZCO OS v3.3 | Full Command</title>
+<title>ZCO OS v3.5 | Absolute Command</title>
 <style>
-:root { --c: #00f2ff; --b: #050505; --g: #00ff41; --r: #ff0000; }
-body { background: var(--b); color: var(--c); font-family: monospace; text-align: center; margin: 0; padding-bottom: 50px; }
-.nav { display: flex; gap: 5px; padding: 10px; border-bottom: 1px solid var(--c); position: sticky; top: 0; background: var(--b); z-index: 100; overflow-x: auto; }
-.btn { flex: 1; min-width: 80px; background: transparent; border: 1px solid var(--c); color: var(--c); padding: 8px; cursor: pointer; font-size: 11px; }
+:root { --c: #00f2ff; --b: #050505; --g: #00ff41; --r: #ff0000; --o: #ff8800; }
+body { background: var(--b); color: var(--c); font-family: 'Courier New', monospace; text-align: center; margin: 0; padding-bottom: 50px; }
+.nav { display: flex; gap: 3px; padding: 10px; border-bottom: 1px solid var(--c); position: sticky; top: 0; background: var(--b); z-index: 100; overflow-x: auto; }
+.btn { flex: 1; min-width: 75px; background: transparent; border: 1px solid var(--c); color: var(--c); padding: 10px 5px; cursor: pointer; font-size: 10px; font-weight: bold; }
 .btn.active { background: var(--c); color: #000; box-shadow: 0 0 15px var(--c); }
 .sec { display: none; padding: 20px; animation: scan 0.4s ease-out; }
 @keyframes scan { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
-table { width: 100%; border-collapse: collapse; margin-top: 15px; font-size: 10px; }
+table { width: 100%; border-collapse: collapse; margin-top: 15px; font-size: 10px; background: rgba(0,0,0,0.5); }
 th, td { border: 1px solid var(--c); padding: 8px; text-align: center; }
-.card { width: 100%; max-width: 350px; border: 2px solid var(--c); margin: 0 auto 15px auto; display: block; border-radius: 10px; }
-.box { border: 1px solid var(--g); padding: 15px; background: rgba(0, 255, 65, 0.05); text-align: left; direction: ltr; }
-textarea { width: 100%; background: #000; border: 1px solid var(--c); color: var(--g); padding: 10px; box-sizing: border-box; }
+th { background: rgba(0, 242, 255, 0.1); color: var(--c); }
+.card { width: 100%; max-width: 350px; border: 2px solid var(--c); margin: 0 auto 15px auto; display: block; border-radius: 12px; box-shadow: 0 0 20px rgba(0,242,255,0.2); }
+.box { border: 1px solid var(--g); padding: 15px; background: rgba(0, 255, 65, 0.05); text-align: left; direction: ltr; margin-bottom: 15px; }
+.box h4 { margin: 0 0 10px 0; color: var(--g); text-transform: uppercase; border-bottom: 1px solid var(--g); padding-bottom: 5px; }
+textarea { width: 100%; background: #000; border: 1px solid var(--c); color: var(--g); padding: 10px; box-sizing: border-box; resize: none; font-family: monospace; }
+.crypt-btn { width: 49%; padding: 12px; margin-top: 10px; border: none; font-weight: bold; cursor: pointer; }
 </style>
 </head>
 <body>
 
 <div id="L" style="margin-top:20vh;">
-    <h3 style="letter-spacing: 5px;">ZCO LOGIN</h3>
-    <input type="password" id="p" placeholder="PASSWORD" style="background:none; border:1px solid var(--c); color:#fff; text-align:center; padding:10px;"><br><br>
-    <button onclick="check()" style="background:var(--c); border:none; padding:12px 30px; font-weight:bold; cursor:pointer;">ACCESS</button>
+    <h3 style="letter-spacing: 5px; color:var(--c);">ZCO INTELLIGENCE SYSTEM</h3>
+    <input type="password" id="p" placeholder="ENTER ACCESS CODE" style="background:none; border:1px solid var(--c); color:#fff; text-align:center; padding:12px; width:220px; border-radius:5px;"><br><br>
+    <button onclick="check()" style="background:var(--c); border:none; padding:12px 40px; font-weight:bold; cursor:pointer; letter-spacing: 2px;">AUTHORIZE ACCESS</button>
 </div>
 
 <div id="M" style="display:none;">
     <div class="nav">
         <button class="btn active" onclick="tab('id',this)">الهوية</button>
         <button class="btn" onclick="tab('rk',this)">الرتب</button>
-        <button class="btn" onclick="tab('cs',this)">العمليات</button>
+        <button class="btn" onclick="tab('cs',this)">القضايا</button>
         <button class="btn" onclick="tab('tl',this)">الأدوات</button>
-        <button class="btn" onclick="tab('cp',this)" style="color:var(--g);">التشفير</button>
+        <button class="btn" onclick="tab('cp',this)" style="color:var(--g); border-color:var(--g);">التشفير</button>
     </div>
 
     <div id="id" class="sec" style="display:block;">
         <img src="image.png" class="card">
-        <h2 style="color:var(--g);">Director General of Intelligence</h2>
-        <p>CODE: ZCO-DGI | RANK: Z-01</p>
+        <h2 style="color:var(--g); margin:5px 0;">Director General of Intelligence</h2>
+        <p style="letter-spacing: 2px;">CODE: ZCO-DGI | RANK: Z-01</p>
+        <small style="color:var(--c);">STATUS: ARCHITECT OF ZCO</small>
     </div>
 
     <div id="rk" class="sec">
+        <h3 style="color:var(--c);">[ZCO INTELLIGENCE HIERARCHY]</h3>
         <table>
-            <tr><th>Order</th><th>Code</th><th>Rank (EN)</th></tr>
-            <tr style="background:rgba(0,255,65,0.1);"><td>1</td><td>ZCO-DGI</td><td>Director General</td></tr>
-            <tr><td>2</td><td>ZCO-DI</td><td>Director</td></tr>
-            <tr><td>3</td><td>ZCO-DDI</td><td>Deputy Director</td></tr>
-            </table>
-        <small style="display:block; margin-top:10px;">(تم إدراج كافة الرتب الـ 17 في سجلات النظام)</small>
+            <tr><th>Order</th><th>Code</th><th>Rank (English)</th></tr>
+            <tr style="background:rgba(0,255,65,0.2); font-weight:bold;"><td>1</td><td>ZCO-DGI</td><td>Director General of Intelligence</td></tr>
+            <tr><td>2</td><td>ZCO-DI</td><td>Director of Intelligence</td></tr>
+            <tr><td>3</td><td>ZCO-DDI</td><td>Deputy Director of Intelligence</td></tr>
+            <tr><td>4</td><td>ZCO-DD</td><td>Deputy Director</td></tr>
+            <tr><td>5</td><td>ZCO-DC</td><td>Division Chief</td></tr>
+            <tr><td>6</td><td>ZCO-UC</td><td>Unit Chief</td></tr>
+            <tr><td>7</td><td>ZCO-SIO</td><td>Senior Intelligence Officer</td></tr>
+            <tr><td>8</td><td>ZCO-IO</td><td>Intelligence Officer</td></tr>
+            <tr><td>9</td><td>ZCO-STRA</td><td>Strategic Analyst</td></tr>
+            <tr><td>10</td><td>ZCO-SIA</td><td>Senior Intelligence Analyst</td></tr>
+            <tr><td>11</td><td>ZCO-IA</td><td>Intelligence Analyst</td></tr>
+            <tr><td>12</td><td>ZCO-TFL</td><td>Team Field Leader</td></tr>
+            <tr><td>13</td><td>ZCO-SA</td><td>Special Agent</td></tr>
+            <tr><td>14</td><td>ZCO-SFA</td><td>Senior Field Agent</td></tr>
+            <tr><td>15</td><td>ZCO-FO</td><td>Field Operative</td></tr>
+            <tr><td>16</td><td>ZCO-FOJ</td><td>Junior Field Operative</td></tr>
+            <tr><td>17</td><td>ZCO-TR</td><td>Intelligence Trainee</td></tr>
+        </table>
     </div>
 
     <div id="cs" class="sec">
         <div class="box">
-            <h4 style="color:var(--g); margin:0;">📡 ACTIVE TARGETS</h4>
-            <small>#001 BOSS PACIFIC: SUCCESS</small>
+            <h4>TARGET #001: BOSS PACIFIC</h4>
+            <small>STATUS: SUCCESSFUL INTRUSION [Secured]</small>
+        </div>
+        <div class="box" style="border-color:var(--o);">
+            <h4 style="color:var(--o);">TARGET #002: HICIT EGYPT</h4>
+            <small>STATUS: ACTIVE RECONNAISSANCE [.edu.eg]</small>
+        </div>
+        <div class="box" style="border-color:var(--r);">
+            <h4 style="color:var(--r);">TARGET #003: CAMPUS SDH</h4>
+            <small>STATUS: VULNERABILITY MAPPING</small>
         </div>
     </div>
 
     <div id="tl" class="sec">
         <div class="box">
-            <h4 style="color:var(--g); margin:0;">🛠️ ARSENAL</h4>
-            <ul style="font-size:10px; list-style:none; padding:0; color:#fff;">
-                <li>• [TEST]: AND (SELECT 1 FROM (SELECT(SLEEP(10)))ZCO)--</li>
-                <li>• [DORK]: inurl:news.php?id=</li>
+            <h4>🛠️ TECHINT ARSENAL</h4>
+            <ul style="font-size:10px; color:#fff; padding-left:15px;">
+                <li><b>[SQL-TIME]:</b> AND (SELECT 1 FROM (SELECT(SLEEP(10)))ZCO)--</li>
+                <li><b>[DB-VER]:</b> AND IF(version() LIKE '5%', SLEEP(10), 0)--</li>
+                <li><b>[PRIV-CHECK]:</b> AND IF(user() LIKE 'root%', SLEEP(10), 0)--</li>
+                <li><b>[OSINT-DORK]:</b> inurl:news.php?id=</li>
+                <li><b>[CONF-LEAK]:</b> filetype:log "password"</li>
+                <li><b>[DIR-SCAN]:</b> intitle:"index of" "backup"</li>
             </ul>
         </div>
     </div>
 
     <div id="cp" class="sec">
         <div class="box" style="text-align:right; direction:rtl;">
-            <h4 style="color:var(--g); margin:0;">🔒 التشفير الحصري</h4>
-            <textarea id="ciInput" rows="3" placeholder="أدخل النص..."></textarea>
-            <button onclick="zco(true)" style="width:48%; background:var(--g); border:none; padding:10px; margin-top:5px;">تشفير</button>
-            <button onclick="zco(false)" style="width:48%; background:var(--c); border:none; padding:10px; margin-top:5px;">فك</button>
-            <textarea id="ciOutput" rows="3" readonly style="margin-top:10px; border-color:var(--g);"></textarea>
+            <h4 style="color:var(--g); border-color:var(--g);">🔒 التشفير الاستخباراتي المتقدم</h4>
+            <p style="font-size: 10px; color: var(--c);">ملاحظة: هذا النص لا يمكن فكه إلا من خلال هذا النظام حصرياً.</p>
+            <textarea id="ciInput" rows="4" placeholder="أدخل النص السري هنا..."></textarea>
+            <div style="display:flex; gap:2%;">
+                <button class="crypt-btn" style="background:var(--g); color:#000;" onclick="zco(true)">تشفير ZCO</button>
+                <button class="crypt-btn" style="background:var(--c); color:#000;" onclick="zco(false)">فك التشفير</button>
+            </div>
+            <p style="font-size: 10px; margin-top:15px;">النتيجة العملياتية:</p>
+            <textarea id="ciOutput" rows="4" readonly style="border-color:var(--g);" placeholder="النتيجة ستظهر هنا..."></textarea>
         </div>
     </div>
 </div>
 
 <script>
-const K = "ZCO-KEY-2026";
-function check(){if(document.getElementById('p').value==='ARCHITECT-01-Z'){document.getElementById('L').style.display='none';document.getElementById('M').style.display='block';}}
-function tab(t,b){let s=document.getElementsByClassName('sec');for(let x of s)x.style.display='none';document.getElementById(t).style.display='block';let bt=document.getElementsByClassName('btn');for(let x of bt)x.classList.remove('active');b.classList.add('active');}
-function zco(e){
-    let i=document.getElementById('ciInput').value; let o=document.getElementById('ciOutput');
-    try{if(e)o.value=btoa(K+"|"+btoa(i)); else{let d=atob(i).split("|"); if(d[0]===K)o.value=atob(d[1]); else o.value="Error";}}
-    catch(err){o.value="Fail";}
+// المفتاح السري المدمج للمنظمة
+const PRIVATE_ZCO_KEY = "ZCO-OFFICIAL-ARCHITECT-2026-HQ";
+
+function check(){
+    if(document.getElementById('p').value==='ARCHITECT-01-Z'){
+        document.getElementById('L').style.display='none';
+        document.getElementById('M').style.display='block';
+    } else { alert('ACCESS DENIED'); }
+}
+
+function tab(t,b){
+    let s=document.getElementsByClassName('sec');
+    for(let x of s) x.style.display='none';
+    document.getElementById(t).style.display='block';
+    let bt=document.getElementsByClassName('btn');
+    for(let x of bt) x.classList.remove('active');
+    b.classList.add('active');
+}
+
+// خوارزمية التشفير الحصرية
+function zco(isEncode){
+    let input = document.getElementById('ciInput').value;
+    let output = document.getElementById('ciOutput');
+    if(!input) return;
+    try {
+        if(isEncode){
+            // تشفير مزدوج مع حقن المفتاح السري
+            let step1 = btoa(unescape(encodeURIComponent(input)));
+            output.value = btoa(PRIVATE_ZCO_KEY + "::" + step1);
+        } else {
+            // التحقق من وجود المفتاح السري قبل فك التشفير
+            let step1 = atob(input).split("::");
+            if(step1[0] === PRIVATE_ZCO_KEY){
+                output.value = decodeURIComponent(escape(atob(step1[1])));
+            } else { throw new Error(); }
+        }
+    } catch(e) { output.value = "❌ خطأ: الكود غير صالح أو مفتاح المنظمة مفقود."; }
 }
 </script>
 </body>
