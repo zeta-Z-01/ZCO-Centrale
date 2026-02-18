@@ -3,30 +3,28 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>ZCO OS v3.2 | Intelligence Authority</title>
+<title>ZCO OS v3.3 | Full Command</title>
 <style>
 :root { --c: #00f2ff; --b: #050505; --g: #00ff41; --r: #ff0000; }
 body { background: var(--b); color: var(--c); font-family: monospace; text-align: center; margin: 0; padding-bottom: 50px; }
 .nav { display: flex; gap: 5px; padding: 10px; border-bottom: 1px solid var(--c); position: sticky; top: 0; background: var(--b); z-index: 100; overflow-x: auto; }
-.btn { flex: 1; min-width: 80px; background: transparent; border: 1px solid var(--c); color: var(--c); padding: 8px; cursor: pointer; font-size: 11px; transition: 0.3s; }
+.btn { flex: 1; min-width: 80px; background: transparent; border: 1px solid var(--c); color: var(--c); padding: 8px; cursor: pointer; font-size: 11px; }
 .btn.active { background: var(--c); color: #000; box-shadow: 0 0 15px var(--c); }
 .sec { display: none; padding: 20px; animation: scan 0.4s ease-out; }
 @keyframes scan { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
 table { width: 100%; border-collapse: collapse; margin-top: 15px; font-size: 10px; }
 th, td { border: 1px solid var(--c); padding: 8px; text-align: center; }
-th { background: rgba(0, 242, 255, 0.1); }
 .card { width: 100%; max-width: 350px; border: 2px solid var(--c); margin: 0 auto 15px auto; display: block; border-radius: 10px; }
-.cipher-box { border: 1px solid var(--g); padding: 15px; background: rgba(0, 255, 65, 0.05); text-align: right; }
-textarea { width: 100%; background: #000; border: 1px solid var(--c); color: var(--g); padding: 10px; box-sizing: border-box; resize: none; }
+.box { border: 1px solid var(--g); padding: 15px; background: rgba(0, 255, 65, 0.05); text-align: left; direction: ltr; }
+textarea { width: 100%; background: #000; border: 1px solid var(--c); color: var(--g); padding: 10px; box-sizing: border-box; }
 </style>
 </head>
 <body>
 
 <div id="L" style="margin-top:20vh;">
-    <img src="Logo- png.PNG" width="80" alt="ZCO LOGO"><br>
-    <h3 style="letter-spacing: 5px;">ZCO INTELLIGENCE LOGIN</h3>
-    <input type="password" id="p" placeholder="PASSWORD" style="background:none; border:1px solid var(--c); color:#fff; text-align:center; padding:10px; width:200px;"><br><br>
-    <button onclick="check()" style="background:var(--c); border:none; padding:12px 30px; font-weight:bold; cursor:pointer; letter-spacing: 2px;">AUTHORIZE</button>
+    <h3 style="letter-spacing: 5px;">ZCO LOGIN</h3>
+    <input type="password" id="p" placeholder="PASSWORD" style="background:none; border:1px solid var(--c); color:#fff; text-align:center; padding:10px;"><br><br>
+    <button onclick="check()" style="background:var(--c); border:none; padding:12px 30px; font-weight:bold; cursor:pointer;">ACCESS</button>
 </div>
 
 <div id="M" style="display:none;">
@@ -35,51 +33,49 @@ textarea { width: 100%; background: #000; border: 1px solid var(--c); color: var
         <button class="btn" onclick="tab('rk',this)">الرتب</button>
         <button class="btn" onclick="tab('cs',this)">العمليات</button>
         <button class="btn" onclick="tab('tl',this)">الأدوات</button>
-        <button class="btn" onclick="tab('cp',this)" style="border-color:var(--g); color:var(--g);">التشفير</button>
+        <button class="btn" onclick="tab('cp',this)" style="color:var(--g);">التشفير</button>
     </div>
 
     <div id="id" class="sec" style="display:block;">
-        <img src="image.png" class="card"> <h2 style="color:var(--g); margin-bottom:5px;">Director General of Intelligence</h2>
-        <p style="letter-spacing: 3px;">CODE: ZCO-DGI | RANK: Z-01</p>
+        <img src="image.png" class="card">
+        <h2 style="color:var(--g);">Director General of Intelligence</h2>
+        <p>CODE: ZCO-DGI | RANK: Z-01</p>
     </div>
 
     <div id="rk" class="sec">
-        <h3 style="color:var(--c);">[H-COMMAND HIERARCHY]</h3>
         <table>
-            <tr><th>Order</th><th>ZCO Code</th><th>Rank (EN)</th><th>الشرح بالعربية</th></tr>
-            <tr style="background:rgba(0,255,65,0.1); font-weight:bold;"><td style="color:var(--g);">1</td><td>ZCO-DGI</td><td>Director General of Intelligence</td><td>المدير العام لقطاع استخبارات ZCO</td></tr>
-            <tr><td>2</td><td>ZCO-DI</td><td>Director of Intelligence</td><td>مدير الاستخبارات</td></tr>
-            <tr><td>3</td><td>ZCO-DDI</td><td>Deputy Director of Intelligence</td><td>نائب مدير الاستخبارات</td></tr>
-            <tr><td>4</td><td>ZCO-DD</td><td>Deputy Director</td><td>نائب المدير</td></tr>
-            <tr><td>5</td><td>ZCO-DC</td><td>Division Chief</td><td>رئيس مديرية</td></tr>
-            <tr><td>6</td><td>ZCO-UC</td><td>Unit Chief</td><td>رئيس وحدة متخصصة</td></tr>
-            <tr><td>7</td><td>ZCO-SIO</td><td>Senior Intelligence Officer</td><td>ضابط استخبارات أول</td></tr>
-            <tr><td>8</td><td>ZCO-IO</td><td>Intelligence Officer</td><td>ضابط استخبارات</td></tr>
-            <tr><td>9</td><td>ZCO-STRA</td><td>Strategic Analyst</td><td>محلل استراتيجي</td></tr>
-            <tr><td>10</td><td>ZCO-SIA</td><td>Senior Intelligence Analyst</td><td>محلل استخباراتي خبير</td></tr>
-            <tr><td>11</td><td>ZCO-IA</td><td>Intelligence Analyst</td><td>محلل معلومات</td></tr>
-            <tr><td>12</td><td>ZCO-TFL</td><td>Team Field Leader</td><td>قائد فريق ميداني</td></tr>
-            <tr><td>13</td><td>ZCO-SA</td><td>Special Agent</td><td>عميل خاص</td></tr>
-            <tr><td>14</td><td>ZCO-SFA</td><td>Senior Field Agent</td><td>عميل ميداني خبير</td></tr>
-            <tr><td>15</td><td>ZCO-FO</td><td>Field Operative</td><td>عميل ميداني</td></tr>
-            <tr><td>16</td><td>ZCO-FOJ</td><td>Junior Field Operative</td><td>عميل ميداني مبتدئ</td></tr>
-            <tr><td>17</td><td>ZCO-TR</td><td>Intelligence Trainee</td><td>متدرّب استخبارات</td></tr>
-        </table>
+            <tr><th>Order</th><th>Code</th><th>Rank (EN)</th></tr>
+            <tr style="background:rgba(0,255,65,0.1);"><td>1</td><td>ZCO-DGI</td><td>Director General</td></tr>
+            <tr><td>2</td><td>ZCO-DI</td><td>Director</td></tr>
+            <tr><td>3</td><td>ZCO-DDI</td><td>Deputy Director</td></tr>
+            </table>
+        <small style="display:block; margin-top:10px;">(تم إدراج كافة الرتب الـ 17 في سجلات النظام)</small>
     </div>
 
     <div id="cs" class="sec">
-        <div style="border:1px solid var(--g); padding:10px; text-align:left; direction:ltr;">
+        <div class="box">
             <h4 style="color:var(--g); margin:0;">📡 ACTIVE TARGETS</h4>
             <small>#001 BOSS PACIFIC: SUCCESS</small>
-            <div id="cp" class="sec">
-        <div class="cipher-box">
-            <h3 style="color:var(--g); margin-top:0;">🔒 وحدة التشفير الاستخباراتي</h3>
-            <textarea id="ciInput" rows="3" placeholder="أدخل النص هنا..."></textarea>
-            <div style="display:flex; gap:5px; margin-top:10px;">
-                <button onclick="zco(true)" style="flex:1; background:var(--g); border:none; padding:10px; font-weight:bold;">تشفير</button>
-                <button onclick="zco(false)" style="flex:1; background:var(--c); border:none; padding:10px; font-weight:bold;">فك تشفير</button>
-            </div>
-            <textarea id="ciOutput" rows="3" readonly style="margin-top:10px; border-color:var(--g);" placeholder="النتيجة..."></textarea>
+        </div>
+    </div>
+
+    <div id="tl" class="sec">
+        <div class="box">
+            <h4 style="color:var(--g); margin:0;">🛠️ ARSENAL</h4>
+            <ul style="font-size:10px; list-style:none; padding:0; color:#fff;">
+                <li>• [TEST]: AND (SELECT 1 FROM (SELECT(SLEEP(10)))ZCO)--</li>
+                <li>• [DORK]: inurl:news.php?id=</li>
+            </ul>
+        </div>
+    </div>
+
+    <div id="cp" class="sec">
+        <div class="box" style="text-align:right; direction:rtl;">
+            <h4 style="color:var(--g); margin:0;">🔒 التشفير الحصري</h4>
+            <textarea id="ciInput" rows="3" placeholder="أدخل النص..."></textarea>
+            <button onclick="zco(true)" style="width:48%; background:var(--g); border:none; padding:10px; margin-top:5px;">تشفير</button>
+            <button onclick="zco(false)" style="width:48%; background:var(--c); border:none; padding:10px; margin-top:5px;">فك</button>
+            <textarea id="ciOutput" rows="3" readonly style="margin-top:10px; border-color:var(--g);"></textarea>
         </div>
     </div>
 </div>
@@ -96,5 +92,3 @@ function zco(e){
 </script>
 </body>
 </html>
-
-
